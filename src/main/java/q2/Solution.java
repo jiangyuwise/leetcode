@@ -33,7 +33,6 @@ public class Solution {
             node.next = new ListNode(incr);
         }
         return head.next;
-
     }
 
     public static void main(String[] args) {
@@ -54,6 +53,14 @@ public class Solution {
         while (result != null) {
             System.out.print(result.val + " ");
             result = result.next;
+        }
+    }
+
+    public static class ListNode {
+        int val;
+        ListNode next;
+        ListNode(int x) {
+            val = x;
         }
     }
 }
