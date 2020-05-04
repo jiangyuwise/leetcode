@@ -13,23 +13,23 @@ public class Solution {
         int n = nums2.length;
         if (m == 0) {
             if (n % 2 == 0) {
-                return (nums2[n / 2 - 1] + nums2[n / 2 + 1]) / 2.0;
+                return (nums2[n / 2 - 1] + nums2[n / 2]) / 2.0;
             } else {
-                return nums2[n / 2 - 1];
+                return nums2[n / 2];
             }
         }
         if (n == 0) {
             if (m % 2 == 0) {
-                return (nums1[m / 2 - 1] + nums1[m / 2 + 1]) / 2.0;
+                return (nums1[m / 2 - 1] + nums1[m / 2]) / 2.0;
             } else {
-                return nums2[m / 2 - 1];
+                return nums1[m / 2];
             }
         }
         tmp = new int[m + n];
         int count = 0;
         int i = 0, j = 0;
         while (count != (m + n)) {
-            if (i == m) {
+            if (i == m) { // nums1 已经复制完
                 while (j != n) {
                     tmp[count++] = nums2[j++];
                 }
@@ -48,14 +48,14 @@ public class Solution {
             }
         }
         if (count % 2 == 0) {
-            return (tmp[count / 2 - 1] + tmp[count / 2 + 1]) / 2.0;
+            return (tmp[count / 2 - 1] + tmp[count / 2]) / 2.0;
         }
         return tmp[count / 2];
     }
 
     public static void main(String[] args) {
-        int[] nums1 = {1, 3};
-        int[] nums2 = {2};
+        int[] nums1 = {};
+        int[] nums2 = {1, 2, 3, 4};
         Solution solution = new Solution();
         System.out.println(solution.middle(nums1, nums2));
     }

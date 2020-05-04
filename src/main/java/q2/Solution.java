@@ -2,6 +2,7 @@ package q2;
 
 /**
  * 两个链表相加
+ * 数字是倒序存储的, 如 342 存储为 2 -> 4 -> 3
  * (2 -> 4 -> 3) + (5 -> 6 -> 4) = 342 + 465 = 807
  * 输出 7 -> 0 -> 8
  * @author admin
@@ -51,7 +52,7 @@ public class Solution {
         Solution solution = new Solution();
         ListNode result = solution.add(l11, l21);
         while (result != null) {
-            System.out.print(result.val + " ");
+            System.out.print(result.val);
             result = result.next;
         }
     }
