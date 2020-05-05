@@ -1,40 +1,46 @@
 package q6;
 
 /**
- * 求最长的回文子串
+ * Z 字变形
  * @author admin
- * @date 2020/5/4 16:08
+ * @date 2020/5/5 15:23
  */
 public class Solution {
 
-    public static void main(String[] args) {
-        Solution solution = new Solution();
-        System.out.println(solution.sub("cbbd"));
-    }
-
-    public String sub(String s) {
-        if (s.length() < 1) {
-            return "";
+    public String convert(String s, int numRows) {
+        if (numRows == 1) {
+            return s;
         }
-        int start = 0, end = 0;
-        for (int i = 0; i < s.length(); i++) {
-            int length1 = center(s, i, i);
-            int length2 = center(s, i, i + 1);
-            int length = Math.max(length1, length2);
-            if (length > end - start) {
-                start = i - (length -1) / 2;
-                end = i + length / 2;
+        int length = s.length();
+        char[][] arr = new char[numRows][length];
+        int x = 0, y = 0, vx = 0, vy = 1;
+        for (int i = 0; i < length; i++) {
+            arr[y][x] = s.charAt(i);
+            if (y + vy == numRows) {
+                vy = -vy;
+                vx = 1;
+            }
+            if (y + vy == -1) {
+                vy = -vy;
+                vx = 0;
+            }
+            x += vx;
+            y += vy;
+        }
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < numRows; i++) {
+            for (int j = 0; j < length; j++) {
+                if (arr[i][j] != '\0') {
+                    builder.append(arr[i][j]);
+                }
             }
         }
-        return s.substring(start, end + 1);
+        return builder.toString();
     }
 
-    private int center(String s, int left, int right) {
-        int i = left, j = right;
-        while (i >= 0 && j < s.length() && s.charAt(i) == s.charAt(j)) {
-            i--;
-            j++;
-        }
-        return j - i - 1;
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        String result = solution.convert("ab", 1);
+        System.out.println(result);
     }
 }
