@@ -1,9 +1,7 @@
 package q7;
 
-import java.util.Arrays;
-import java.util.stream.Stream;
-
 /**
+ * 数字反转
  * @author admin
  * @date 2020/1/14 12:11
  */
