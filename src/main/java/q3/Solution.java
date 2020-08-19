@@ -19,7 +19,7 @@ public class Solution {
         while (i < n && j < n) {
             if (!set.contains(s.charAt(j))) {
                 set.add(s.charAt(j++));
-                if (j - i > length) {
+                if (length < j - i) {
                     length = j - i;
                 }
             } else {
