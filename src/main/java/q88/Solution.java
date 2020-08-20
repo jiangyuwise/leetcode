@@ -1,4 +1,4 @@
-package q1010;
+package q88;
 
 import java.util.Arrays;
 
