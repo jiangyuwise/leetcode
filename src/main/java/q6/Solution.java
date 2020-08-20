@@ -40,7 +40,7 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        String result = solution.convert("ab", 1);
+        String result = solution.convert("LEETCODEISHIRING", 1);
         System.out.println(result);
     }
 }
