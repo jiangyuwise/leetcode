@@ -16,23 +16,25 @@ package q72;
  * dp[i][j] = min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]) + 1
  *
  * 初始值, 如果某一个字符串的长度为 0, 则另一个字符串只能进行插入或者删除操作了.
+ *
+ * 时间: O(mn), 空间 O(mn)
  * @author admin
  * @date 2020/5/15 22:31
  */
 public class Solution {
 
     public int edit(String word1, String word2) {
-        int n1 = word1.length();
-        int n2 = word2.length();
-        int[][] dp = new int[n1 + 1][n2 + 1];
-        for (int j = 1; j <= n2; j++) {
+        int m = word1.length();
+        int n = word2.length();
+        int[][] dp = new int[m + 1][n + 1];
+        for (int j = 1; j <= n; j++) {
             dp[0][j] = dp[0][j - 1] + 1;
         }
-        for (int i = 1; i <= n1; i++) {
+        for (int i = 1; i <= m; i++) {
             dp[i][0] = dp[i - 1][0] + 1;
         }
-        for (int i = 1; i <= n1; i++) {
-            for (int j = 1; j <= n2; j++) {
+        for (int i = 1; i <= m; i++) {
+            for (int j = 1; j <= n; j++) {
                 if (word1.charAt(i - 1) == word2.charAt(j - 1)) {
                     dp[i][j] = dp[i - 1][j - 1];
                 } else {
@@ -40,7 +42,7 @@ public class Solution {
                 }
             }
         }
-        return dp[n1][n2];
+        return dp[m][n];
     }
 
     public static void main(String[] args) {
