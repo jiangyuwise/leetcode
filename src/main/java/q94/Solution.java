@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 二叉树的中序排序
+ * 二叉树的中序遍历
  *
  * @author admin
  * @date 2020/8/20 22:08

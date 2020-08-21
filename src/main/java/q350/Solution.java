@@ -3,6 +3,7 @@ package q350;
 import java.util.*;
 
 /**
+ * 求 2 个数组的交集
  * @author admin
  * @date 2020/7/24 10:33
  */

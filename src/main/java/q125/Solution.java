@@ -1,4 +1,4 @@
-package q1.q125;
+package q125;
 
 /**
  * @author admin

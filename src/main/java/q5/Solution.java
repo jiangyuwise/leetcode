@@ -26,15 +26,15 @@ public class Solution {
         int maxLength = 1;
         int begin = 0;
         boolean[][] dp = new boolean[length][length];
-        for (int i = 0; i < length; i++) {
+        for (int i = 0; i < length; i ++) {
             dp[i][i] = true;
         }
-        for (int j = 1; j < length; j++) {
-            for (int i = 0; i < j; i++) {
+        for (int j = 1; j < length; j ++) {
+            for (int i = 0; i < j; i ++) {
                 if (s.charAt(i) != s.charAt(j)) {
                     dp[i][j] = false;
                 } else {
-                    if (j - i < 3) { // a, aa, aba 形式
+                    if (j - i < 3) {
                         dp[i][j] = true;
                     } else {
                         dp[i][j] = dp[i + 1][j - 1];
@@ -51,7 +51,7 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        System.out.println(solution.sub("cbbd"));
+        System.out.println(solution.sub("ac"));
     }
 
 }

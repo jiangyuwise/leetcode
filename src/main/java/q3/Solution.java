@@ -7,6 +7,8 @@ import java.util.Set;
  * 求不含重复字符的最长子串的长度
  * 例如: "abcabcbb" 的最长不重复子串为 "abc", 长度为 3
  * 子串必须是连续的.
+ *
+ * 双指针滑动窗口
  * @author admin
  * @date 2020/1/12 11:44
  */
