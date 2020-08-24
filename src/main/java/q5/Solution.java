@@ -25,7 +25,7 @@ public class Solution {
         if (length < 2) {
             return s;
         }
-        int maxLength = 0;
+        int maxLength = 1;
         int begin = 0;
         boolean[][] dp = new boolean[length][length];
         for (int i = 0; i < length; i ++) {
