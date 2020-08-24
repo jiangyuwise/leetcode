@@ -13,6 +13,8 @@ package q5;
  * dp[i][j] = (s[i] == s[j]) and dp[i + 1][j - 1]
  *
  * 时间 O(n^2), 空间 O(n^2)
+ *
+ * 注意, "ac" 的结果是 "a", 因此 maxLength 初始值为 1.
  * @author admin
  * @date 2020/5/4 16:08
  */
@@ -23,7 +25,7 @@ public class Solution {
         if (length < 2) {
             return s;
         }
-        int maxLength = 1;
+        int maxLength = 0;
         int begin = 0;
         boolean[][] dp = new boolean[length][length];
         for (int i = 0; i < length; i ++) {

@@ -9,19 +9,19 @@ package q53;
  * 动态规划转移方程: dp[i] = max(dp[i - 1] + nums[i], nums[i])
  * 时间 O(n), 空间 O(n)
  *
- * 如果使用一个变量 pre 表示 dp[i - 1], 则空间复杂度变为 O(1)
+ * 如果使用一个变量 dp 表示 dp[i - 1], 则空间复杂度变为 O(1)
  * @author admin
  * @date 2020/8/19 23:16
  */
 public class Solution {
 
     public int maxSubArray(int[] nums) {
-        int pre = nums[0];
+        int dp = nums[0];
         int max = nums[0];
         for (int i = 1; i < nums.length; i++) {
-            pre = Math.max(pre + nums[i], nums[i]);
-            if (max < pre) {
-                max = pre;
+            dp = Math.max(dp + nums[i], nums[i]);
+            if (max < dp) {
+                max = dp;
             }
         }
         return max;
