@@ -28,6 +28,7 @@ public class Solution {
         while (i < length && Character.isDigit(chars[i])) {
             char ch = chars[i];
             int tmp = ch - '0';
+            // 这里必须要先判断再增加, 否则如果 result 已经大于 max 后, 继续增会变成负数
             if (result > (Integer.MAX_VALUE - tmp) / 10) {
                 return signal == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
             }

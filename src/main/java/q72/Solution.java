@@ -10,7 +10,7 @@ package q72;
  * 分情况判断:
  * 如果 word1 与 word2 相等, 则不需要操作, dp[i][j] = dp[i-1][j]
  *
- * 1) 如果把字符 word1[i] 替换成与 word2[j] 相等, 则有 dp[i][j] = dp[i-1][j-1] + 1
+ * 1) 如果把字符 word1[i] 替换后与 word2[j] 相等, 则有 dp[i][j] = dp[i-1][j-1] + 1
  * 2) 如果在字符串 word1 末尾插入与 word2[j] 相等的字符, 则有 dp[i][j] = dp[i][j-1] + 1
  * 3) 如果把字符串 word1[i] 删除, 则有 dp[i][j] = dp[i-1][j] + 1
  * dp[i][j] = min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]) + 1

@@ -2,6 +2,7 @@ package q95;
 
 import util.TreeNode;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -18,13 +19,13 @@ public class Solution {
 
     public List<TreeNode> generateTrees(int n) {
         if (n == 0) {
-            return new LinkedList<>();
+            return new ArrayList<>();
         }
         return recursive(1, n);
     }
 
     public List<TreeNode> recursive(int start, int end) {
-        List<TreeNode> trees = new LinkedList<>();
+        List<TreeNode> trees = new ArrayList<>();
         if (start > end) {
             trees.add(null);
             return trees;

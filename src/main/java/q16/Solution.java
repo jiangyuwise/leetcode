@@ -3,6 +3,7 @@ package q16;
 import java.util.Arrays;
 
 /**
+ * 寻找 3 个数, 使其和最接近 target, 返回这 3 个数的和.
  * @author admin
  * @date 2020/8/20 16:40
  */

@@ -1,6 +1,7 @@
 package q14;
 
 /**
+ * 最长公共前缀
  * @author admin
  * @date 2020/7/24 12:09
  */

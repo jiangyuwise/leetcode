@@ -10,11 +10,11 @@ public class Solution {
     public int max(int[] prices) {
         int minPrice = Integer.MAX_VALUE;
         int maxProfit = 0;
-        for (int i = 0; i < prices.length; i++) {
-            if (minPrice > prices[i]) { // 寻找最低价格
-                minPrice = prices[i];
-            } else if (maxProfit < prices[i] - minPrice) {  // 或者计算最大利润
-                maxProfit = prices[i] - minPrice;
+        for (int price : prices) {  // 寻找最低价格
+            if (minPrice > price) {
+                minPrice = price;
+            } else if (maxProfit < price - minPrice) {   // 或者计算最大利润
+                maxProfit = price - minPrice;
             }
         }
         return maxProfit;

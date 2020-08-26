@@ -1,5 +1,7 @@
 package q103;
 
+import util.TreeNode;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -46,43 +48,5 @@ public class Solution {
         Solution solution = new Solution();
         List<List<Integer>> result = solution.traverse(root);
         result.forEach(System.out::println);
-    }
-}
-
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode(int val) {
-        this.val = val;
-    }
-
-    public static TreeNode treeify(Integer[] data) {
-        if (data.length == 0) {
-            return null;
-        }
-        TreeNode root = new TreeNode(data[0]);
-        Queue<TreeNode> queue = new LinkedList<>();
-        queue.offer(root);
-        boolean isLeft = true;
-        for (int i = 1; i < data.length; i++) {
-            TreeNode node = queue.peek();
-            if (isLeft) {
-                if (data[i] != null) {
-                    node.left = new TreeNode(data[i]);
-                    queue.offer(node.left);
-                    isLeft = false;
-                }
-            } else {
-                if (data[i] != null) {
-                    node.right = new TreeNode(data[i]);
-                    queue.offer(node.right);
-                    queue.poll();
-                    isLeft = true;
-                }
-            }
-        }
-        return root;
     }
 }

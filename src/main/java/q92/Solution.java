@@ -19,6 +19,7 @@ public class Solution {
             return null;
         }
         ListNode cur = head, pre = null;
+
         while (m > 1) { // 循环了 m - 1 次
             pre = cur;
             cur = cur.next;

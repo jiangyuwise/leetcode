@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/**
+/**在数组中寻找三个不同的数, 使得 a + b + c = 0
  * @author admin
  * @date 2020/8/20 12:56
  */
@@ -19,12 +19,11 @@ public class Solution {
                 continue;
             }
             int third = length - 1;
-            int target = -nums[first];
             for (int second = first + 1; second < length; second++) {
                 if (second > first + 1 && nums[second] == nums[second - 1]) {
                     continue;
                 }
-                while (second < third && nums[second] + nums[third] > target) {
+                while (second < third && nums[second] + nums[third] > -nums[first]) {
                     third--;
                 }
                 if (second == third) {

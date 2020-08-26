@@ -6,8 +6,8 @@ package q62;
  *
  * 动态规划, 设 dp[i][j] 表示到达 (i, j) 的路径总数
  * dp[i][j] = dp[i-1][j] + dp[i][j-1]
- * dp[0][j] = 1, j = 0 ... n - 1
  * dp[i][0] = 1, i = 0 ... m - 1
+ * dp[0][j] = 1, j = 0 ... n - 1
  *
  * 时间 O(m * n), 空间 O(m * n)
  * @author admin

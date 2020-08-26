@@ -14,7 +14,7 @@ package q70;
 public class Solution2 {
 
     public int jump(int n) {
-        if (n <= 1) {
+        if (n < 1) {
             return 1;
         }
         int p = 0, q = 0, r = 1;
