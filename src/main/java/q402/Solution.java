@@ -20,26 +20,25 @@ import java.util.LinkedList;
 public class Solution {
 
     public String removeKDigits(String num, int k) {
-        LinkedList<Character> stack = new LinkedList<>();
-
+        LinkedList<Character> chars = new LinkedList<>();
         for (char ch : num.toCharArray()) {
-            while (stack.size() > 0 && k > 0 && stack.peekLast() > ch) {
-                stack.removeLast();
-                k--;
+            while (chars.size() > 0 && k > 0 && chars.peekLast() > ch) {
+                chars.removeLast();
+                k --;
             }
-            stack.addLast(ch);
+            chars.addLast(ch);
         }
-        for (int i = 0; i < k; i++) {
-            stack.removeLast();
+        while (k > 0) {
+            chars.removeLast();
+            k --;
         }
-
         StringBuilder builder = new StringBuilder();
-        boolean leadZero = true;
-        for (char ch : stack) {
-            if (ch == '0' && leadZero) {
+        boolean zeroFlag = true;
+        for (char ch : chars) {
+            if (ch == '0' && zeroFlag) {
                 continue;
             }
-            leadZero = false;
+            zeroFlag = false;
             builder.append(ch);
         }
         if (builder.length() == 0) {

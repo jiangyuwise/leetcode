@@ -1,5 +1,7 @@
 package q0202;
 
+import util.ListNode;
+
 /**
  * 实现一种算法，找出单向链表中倒数第 k 个节点。返回该节点的值。
  *
@@ -34,10 +36,3 @@ public class Solution {
     }
 }
 
-class ListNode {
-    int val;
-    ListNode next;
-    ListNode(int val) {
-        this.val = val;
-    }
-}

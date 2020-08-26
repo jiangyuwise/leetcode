@@ -10,7 +10,7 @@ import java.util.Arrays;
  * @date 2020/8/24 15:17
  */
 public class Solution {
-    int result = Integer.MAX_VALUE;
+    int minTotal = Integer.MAX_VALUE;
 
     public int coinChange(int[] coins, int amount) {
         if (amount == 0) {
@@ -18,18 +18,18 @@ public class Solution {
         }
         Arrays.sort(coins);
         dfs(coins, amount, coins.length -1, 0);
-        return result == Integer.MAX_VALUE ? -1 : result;
+        return minTotal == Integer.MAX_VALUE ? -1 : minTotal;
     }
 
-    public void dfs(int[] coins, int amount, int index, int count) {
+    public void dfs(int[] coins, int amount, int index, int total) {
         if (amount == 0) {
-            result = Math.min(result, count);
+            minTotal = Math.min(minTotal, total);
         }
         if (index < 0) {
             return;
         }
-        for (int i = amount / coins[index]; i >= 0 && i + count < result; i--) {
-            dfs(coins, amount - i * coins[index], index - 1, i + count);
+        for (int tmpTotal = amount / coins[index]; tmpTotal >= 0 && tmpTotal + total < minTotal; tmpTotal--) {
+            dfs(coins, amount - tmpTotal * coins[index], index - 1, tmpTotal + total);
         }
     }
 
