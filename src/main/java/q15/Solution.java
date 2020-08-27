@@ -18,24 +18,27 @@ public class Solution {
             if (first > 0 && nums[first] == nums[first - 1]) {
                 continue;
             }
-            int third = length - 1;
-            for (int second = first + 1; second < length; second++) {
-                if (second > first + 1 && nums[second] == nums[second - 1]) {
-                    continue;
-                }
-                while (second < third && nums[second] + nums[third] > -nums[first]) {
-                    third--;
-                }
-                if (second == third) {
-                    break;
-                }
-                if (nums[first] + nums[second] + nums[third] == 0) {
+            int second = first + 1, third = length - 1;
+            while (second < third) {
+                int sum = nums[first] + nums[second] + nums[third];
+                if (sum > 0) {
+                    third --;
+                } else if (sum < 0) {
+                    second ++;
+                } else {
                     List<Integer> list = new ArrayList<>();
                     list.add(nums[first]);
                     list.add(nums[second]);
                     list.add(nums[third]);
                     result.add(list);
-
+                    while (second < third && nums[second] == nums[second + 1]) {
+                        second ++;
+                    }
+                    while (second < third && nums[third - 1] == nums[third]) {
+                        third --;
+                    }
+                    second ++;
+                    third --;
                 }
             }
         }

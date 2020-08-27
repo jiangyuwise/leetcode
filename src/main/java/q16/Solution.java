@@ -10,10 +10,9 @@ import java.util.Arrays;
 public class Solution {
     public int threeSumClosest(int[] nums, int target) {
         Arrays.sort(nums);
-        int closet = 1000_0000;
+        int closet = 100_0000;
         for (int first = 0; first < nums.length; first++) {
-            int second = first + 1;
-            int third = nums.length - 1;
+            int second = first + 1, third = nums.length - 1;
             while (second < third) {
                 int sum = nums[first] + nums[second] + nums[third];
                 if (sum == target) {
@@ -22,18 +21,16 @@ public class Solution {
                 if (Math.abs(sum - target) < Math.abs(closet - target)) {
                     closet = sum;
                 }
-                if (sum > target) {
-                    int tmpThird = third - 1;
-                    while (second < tmpThird && nums[tmpThird] == nums[third]) {
-                        tmpThird--;
+                if (sum < target) {
+                    while (second < third && nums[second] == nums[second + 1]) {
+                        second++;
                     }
-                    third = tmpThird;
+                    second ++;
                 } else {
-                    int tmpSecond = second + 1;
-                    while (tmpSecond < third && nums[tmpSecond] == nums[second]) {
-                        tmpSecond++;
+                    while (second < third && nums[third - 1] == nums[third]) {
+                        third --;
                     }
-                    second = tmpSecond;
+                    third --;
                 }
             }
         }
