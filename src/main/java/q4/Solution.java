@@ -8,49 +8,43 @@ package q4;
 public class Solution {
 
     double middle(int[] nums1, int[] nums2) {
-        int[] tmp;
-        int m = nums1.length;
-        int n = nums2.length;
-        if (m == 0) {
-            if (n % 2 == 0) {
-                return (nums2[n / 2 - 1] + nums2[n / 2]) / 2.0;
+        int length1 = nums1.length, length2 = nums2.length;
+        int totalLength = length1 + length2;
+        if ((totalLength & 1) == 1) {
+            int mid = totalLength / 2;
+            return getK(nums1, nums2, mid + 1);
+        } else {
+            int mid1 = totalLength / 2 - 1;
+            int mid2 = totalLength / 2;
+            return (getK(nums1, nums2, mid1 + 1) + getK(nums1, nums2, mid2 + 1)) / 2.0;
+        }
+    }
+
+    public int getK(int[] nums1, int[] nums2, int k) {
+        int length1 = nums1.length, length2 = nums2.length;
+        int index1 = 0, index2 = 0;
+        while (true) {
+            if (index1 == length1) {
+                return nums2[index2 + k - 1];
+            }
+            if (index2 == length2) {
+                return nums1[index1 + k - 1];
+            }
+            if (k == 1) {
+                return Math.min(nums1[index1], nums2[index2]);
+            }
+            int mid = k / 2;
+            int newIndex1 = Math.min(index1 + mid, length1) - 1;
+            int newIndex2 = Math.min(index2 + mid, length2) - 1;
+            int pivot1 = nums1[newIndex1], pivot2 = nums2[newIndex2];
+            if (pivot1 <= pivot2) {
+                k -= (newIndex1 - index1 + 1);  // 排除 nums1[0] ~ nums1[k / 2]
+                index1 = newIndex1 + 1;
             } else {
-                return nums2[n / 2];
+                k -= (newIndex2 - index2 + 1);  // 排除 nums2[0] ~ nums2[k / 2]
+                index2 = newIndex2 + 1;
             }
         }
-        if (n == 0) {
-            if (m % 2 == 0) {
-                return (nums1[m / 2 - 1] + nums1[m / 2]) / 2.0;
-            } else {
-                return nums1[m / 2];
-            }
-        }
-        tmp = new int[m + n];
-        int count = 0;
-        int i = 0, j = 0;
-        while (count != (m + n)) {
-            if (i == m) { // nums1 已经复制完
-                while (j != n) {
-                    tmp[count++] = nums2[j++];
-                }
-                break;
-            }
-            if (j == n) {
-                while (i != m) {
-                    tmp[count++] = nums1[i++];
-                }
-                break;
-            }
-            if (nums1[i] <= nums2[j]) {
-                tmp[count++] = nums1[i++];
-            } else {
-                tmp[count++] = nums2[j++];
-            }
-        }
-        if (count % 2 == 0) {
-            return (tmp[count / 2 - 1] + tmp[count / 2]) / 2.0;
-        }
-        return tmp[count / 2];
     }
 
     public static void main(String[] args) {

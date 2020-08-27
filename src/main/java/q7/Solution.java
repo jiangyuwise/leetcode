@@ -8,15 +8,20 @@ package q7;
 public class Solution {
 
     private int reverse(int x) {
-        long result = 0;
+        int num = 0;
+        int tmp = 0;
         while (x != 0) {
-            result = result * 10 + x % 10;
+            tmp = x % 10;
             x = x / 10;
+            if (num > Integer.MAX_VALUE / 10 || (num == Integer.MAX_VALUE / 10 && tmp > 7)) {
+                return 0;
+            }
+            if (num < Integer.MIN_VALUE / 10 || (num == Integer.MIN_VALUE / 10 && tmp < -8)) {
+                return 0;
+            }
+            num = num * 10 + tmp;
         }
-        if (result > Integer.MAX_VALUE || result < Integer.MIN_VALUE) {
-            return 0;
-        }
-        return (int)result;
+        return num;
     }
 
     public static void main(String[] args) {

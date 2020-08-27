@@ -2,6 +2,8 @@ package q6;
 
 /**
  * Z 字变形
+ *
+ * 时间复杂度 O(n^2)
  * @author admin
  * @date 2020/5/5 15:23
  */
