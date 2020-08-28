@@ -14,31 +14,31 @@ public class Solution {
         int length = nums.length;
         Arrays.sort(nums);
         List<List<Integer>> result = new ArrayList<>();
-        for (int first = 0; first < length; first++) {
-            if (first > 0 && nums[first] == nums[first - 1]) {
+        for (int i = 0; i < length; i++) {
+            if (i > 0 && nums[i] == nums[i - 1]) {
                 continue;
             }
-            int second = first + 1, third = length - 1;
-            while (second < third) {
-                int sum = nums[first] + nums[second] + nums[third];
+            int j = i + 1, k = length - 1;
+            while (j < k) {
+                int sum = nums[i] + nums[j] + nums[k];
                 if (sum > 0) {
-                    third --;
+                    k --;
                 } else if (sum < 0) {
-                    second ++;
+                    j ++;
                 } else {
                     List<Integer> list = new ArrayList<>();
-                    list.add(nums[first]);
-                    list.add(nums[second]);
-                    list.add(nums[third]);
+                    list.add(nums[i]);
+                    list.add(nums[j]);
+                    list.add(nums[k]);
                     result.add(list);
-                    while (second < third && nums[second] == nums[second + 1]) {
-                        second ++;
+                    while (j < k && nums[j] == nums[j + 1]) {
+                        j ++;
                     }
-                    while (second < third && nums[third - 1] == nums[third]) {
-                        third --;
+                    while (j < k && nums[k - 1] == nums[k]) {
+                        k --;
                     }
-                    second ++;
-                    third --;
+                    j ++;
+                    k --;
                 }
             }
         }
