@@ -1,4 +1,4 @@
-package q30.q33;
+package q33;
 
 /**
  * @author admin
