@@ -10,15 +10,15 @@ import java.util.List;
 public class Solution {
     public List<Integer> spiralOrder(int[][] matrix) {
         List<Integer> result = new ArrayList<>();
-        int m = matrix.length;
-        int n = matrix[0].length;
+        int m = matrix.length; // y的边界
+        int n = matrix[0].length; // x 的边界
         int x = 0, y = 0;
         int vx = 1, vy = 0;
         for (int i = 0; i < m * n; i ++) {
             result.add(matrix[y][x]);
             matrix[y][x] = 0;
             if (x + vx == -1 || x + vx == n || y + vy == -1 || y + vy == m || matrix[y + vy][x + vx] == 0) {
-                if (vx != 0) {
+                if (vx != 0 ) {
                     vy = vx;
                     vx = 0;
                 } else {
