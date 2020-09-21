@@ -1,5 +1,7 @@
 package q2;
 
+import util.ListNode;
+
 /**
  * 两个链表相加
  * 数字是倒序存储的, 如 342 存储为 2 -> 4 -> 3
@@ -10,58 +12,36 @@ package q2;
  */
 public class Solution {
 
-    ListNode add(ListNode l1, ListNode l2) {
-        ListNode node = new ListNode(0);
-        ListNode p1 = l1, p2 = l2, head = node;
-        int x, y, tmp, incr = 0;
-        while (p1 != null || p2 != null) {
-            x = 0;
-            y = 0;
-            if (p1 != null) {
-                x = p1.val;
-                p1 = p1.next;
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode p = l1, q = l2;
+        ListNode r = new ListNode(0), h = r;
+        int incr = 0;
+        while (p != null || q != null) {
+            int tmp = 0;
+            if (p != null) {
+                tmp += p.val;
+                p = p.next;
             }
-            if (p2 != null) {
-                y = p2.val;
-                p2 = p2.next;
+            if (q != null) {
+                tmp += q.val;
+                q = q.next;
             }
-            tmp = x + y + incr;
-            node.next = new ListNode(tmp % 10);
-            node = node.next;
+            tmp += incr;
+            r.next = new ListNode(tmp % 10);
+            r = r.next;
             incr = tmp / 10;
         }
         if (incr > 0) {
-            node.next = new ListNode(incr);
+            r.next = new ListNode(incr);
         }
-        return head.next;
+        return h.next;
     }
 
     public static void main(String[] args) {
-        ListNode l11 = new ListNode(2);
-        ListNode l12 = new ListNode(4);
-        ListNode l13 = new ListNode(3);
-        l11.next = l12;
-        l12.next = l13;
-
-        ListNode l21 = new ListNode(5);
-        ListNode l22 = new ListNode(6);
-        ListNode l23 = new ListNode(4);
-        l21.next = l22;
-        l22.next = l23;
-
+        ListNode l1 = util.ListNode.build(new int[]{2, 4, 3});
+        ListNode l2 = ListNode.build(new int[]{5, 6, 4});
         Solution solution = new Solution();
-        ListNode result = solution.add(l11, l21);
-        while (result != null) {
-            System.out.print(result.val);
-            result = result.next;
-        }
-    }
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-        ListNode(int x) {
-            val = x;
-        }
+        ListNode result = solution.addTwoNumbers(l1, l2);
+        System.out.println(ListNode.traverse(result));
     }
 }
